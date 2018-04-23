@@ -1,7 +1,7 @@
 package com.imooc.array;
 
 /**
- * @author suyu
+ * @author sy
  * @version 1.0.0
  * @ClassName Array（有限制，数组只能放整形）数组篇
  * @Description 慕课实战--数据结构篇
