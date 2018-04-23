@@ -3,7 +3,7 @@ package com.imooc.array;
 /**
  * @author suyu
  * @version 1.0.0
- * @ClassName Array（改版，数据类型变为泛型） 数组篇
+ * @ClassName ArrayT（改版，数据类型变为泛型） 数组篇
  * @Description 慕课实战--数据结构篇
  * @Date 2018/4/21 11:20
  */
