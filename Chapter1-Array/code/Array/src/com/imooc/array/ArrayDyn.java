@@ -1,13 +1,13 @@
 package com.imooc.array;
 
 /**
- * @author sy
+ * @author suyu
  * @version 1.0.0
- * @ClassName ArrayT（改版，数据类型变为泛型） 数组篇
+ * @ClassName ArrayDyn（改版，变为动态数组） 数组篇
  * @Description 慕课实战--数据结构篇
- * @Date 2018/4/21 11:20
+ * @Date 2018年04月23日23:55:38
  */
-public class ArrayT<E> {
+public class ArrayDyn<E> {
 
     /**
      * 自定义初始化一个int的数组
@@ -23,7 +23,7 @@ public class ArrayT<E> {
      *
      * @param capacity
      */
-    public ArrayT(int capacity) {
+    public ArrayDyn(int capacity) {
         //不能直接new 泛型,如下
         //data = new E[capacity];
         //只能通过Object来创建进行强转了
@@ -34,7 +34,7 @@ public class ArrayT<E> {
     /**
      * 无参构造函数，默认调用构造函数，给10个大小的数组
      */
-    public ArrayT() {
+    public ArrayDyn() {
         this(10);
     }
 
@@ -93,7 +93,7 @@ public class ArrayT<E> {
      */
     public void add(int index, E e) {
         if (size == data.length) {
-            throw new IllegalArgumentException("AddLast failed.Array is full.");
+            resize(2 * data.length);
         }
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("AddLast failed.Require index =>0 and index <= size .");
@@ -106,6 +106,19 @@ public class ArrayT<E> {
         data[index] = e;
         //每次将指针往后移动一格
         size++;
+    }
+
+    /**
+     * 动态数组重构大小
+     *
+     * @param newCapacity 新容量大小
+     */
+    private void resize(int newCapacity) {
+        E[] newData = (E[]) new Object[newCapacity];
+        for (int i = 0; i < size; i++) {
+            newData[i] = data[i];
+        }
+        data = newData;
     }
 
     /**
@@ -178,6 +191,10 @@ public class ArrayT<E> {
         E ret = data[index];
         for (int i = index + 1; i < size; i++) {
             data[i - 1] = data[i];
+        }
+        //如果删除索引时,发生了容量减小,实际空间也要减小
+        if (size == data.length / 2) {
+            resize(data.length / 2);
         }
         size--;
         //loitering objects != memory leak
