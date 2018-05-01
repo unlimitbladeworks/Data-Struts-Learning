@@ -9,7 +9,7 @@ import java.util.Random;
  * @author suyu
  * @version 1.0.0
  * @ClassName MainTest
- * @Description 队列的测试类
+ * @Description 数组队列的测试类
  * @Date 2018/4/27 14:28
  */
 public class MainTest {
