@@ -9,14 +9,11 @@ import java.util.Stack;
  * @author suyu
  * @version 1.0.0
  * @ClassName MainTest
- * @Description  xxx
+ * @Description  ArrayStack's test Class
  * @Date 2018/4/27 14:28
  */
 public class MainTest {
 
-    /**
-     * 数组栈的测试方法
-     */
     @Test
     public void testArrayStack() {
         ArrayStack<Integer> stack = new ArrayStack<>();
