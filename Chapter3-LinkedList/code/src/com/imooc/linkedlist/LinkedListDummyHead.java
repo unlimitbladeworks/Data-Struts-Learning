@@ -3,11 +3,11 @@ package com.imooc.linkedlist;
 /**
  * @author suyu
  * @version 1.0.0
- * @ClassName LinkedList
- * @Description 最基础的动态数据结构--链表
- * @Date 2018/5/1 21:52
+ * @ClassName LinkedListDummyHead
+ * @Description 虚拟头结点的链表实现
+ * @Date 2018/5/2 13:26
  */
-public class LinkedList<E> {
+public class LinkedListDummyHead<E> {
 
     /**
      * 此处设计Node节点类为内部类，目的如下：
@@ -58,17 +58,17 @@ public class LinkedList<E> {
     }
 
     /**
-     * 头结点指针
+     * 虚拟头结点指针
      */
-    private Node head;
+    private Node dummyHead;
     /**
      * 链表的大小
      */
     private int size;
 
-    public LinkedList() {
-        //初始化头指针为空,大小为0
-        head = null;
+    public LinkedListDummyHead() {
+        //初始化虚拟头指针,存在节点即是一个null
+        dummyHead = new Node(null, null);
         size = 0;
     }
 
@@ -91,23 +91,6 @@ public class LinkedList<E> {
     }
 
     /**
-     * 链表头部新增节点
-     *
-     * @param e 新增元素
-     */
-    public void addFirst(E e) {
-        //在头部新增一个
-//        Node node = new Node(e);
-//        node.next = head;
-//        head = node;
-
-        //优雅的写法,一句等于上面三句
-        head = new Node(e, head);
-        //维护一下size
-        size++;
-    }
-
-    /**
      * 链表中间插入的元素
      *
      * @param index "索引",所谓的索引并不是真索引,方便定义而已
@@ -117,31 +100,37 @@ public class LinkedList<E> {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("Add failed. Illegal index");
         }
-        if (index == 0) {
-            addFirst(e);
-        } else {
-            //1.假设要插入的元素node名字为prev,并且从链表头进行初始化
-            Node prev = head;
-            //2.循环遍历,确定prev的next的指向位置
-            for (int i = 0; i < index - 1; i++) {
-                prev = prev.next;
-            }
-            //3.将插入的node.next指向prev的next
-            Node node = new Node(e);
-            node.next = prev.next;
-            prev.next = node;
-
-            //优雅的写法:与addFirst中一样,上面三行的注释
-            prev.next = new Node(e, prev.next);
-            size++;
+        //1.假设要插入的元素node名字为prev,并且从链表的虚拟头节点进行初始化
+        Node prev = dummyHead;
+        //2.循环遍历,从dummyHead开始遍历,0,1,2,3.....index之前的节点
+        for (int i = 0; i < index; i++) {
+            prev = prev.next;
         }
+        //3.将插入的node.next指向prev的next
+        Node node = new Node(e);
+        node.next = prev.next;
+        prev.next = node;
+
+        //优雅的写法:与addFirst中一样,上面三行的注释
+        prev.next = new Node(e, prev.next);
+        size++;
+    }
+
+    /**
+     * 链表头部新增节点
+     *
+     * @param e 新增元素
+     */
+    public void addFirst(E e) {
+        add(0,e);
     }
 
     /**
      * 链表最后添加元素
+     *
      * @param e 数据元素
      */
-    public void addLast(E e){
-        add(size,e);
+    public void addLast(E e) {
+        add(size, e);
     }
 }
