@@ -7,7 +7,7 @@ import org.junit.Test;
  * @version 1.0.0
  * @ClassName MainTest
  * @Description test LinkedList's Class
- * @Date 18-5-3 обнГ10:11
+ * @Date 18-5-3 22:11
  */
 public class MainTest {
 
