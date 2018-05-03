@@ -6,7 +6,7 @@ import org.junit.Test;
  * @author suyu
  * @version 1.0.0
  * @ClassName MainTest
- * @Description Á´±í²âÊÔÀà
+ * @Description test LinkedList 'Class
  * @Date 18-5-3 ÏÂÎç10:11
  */
 public class MainTest {
