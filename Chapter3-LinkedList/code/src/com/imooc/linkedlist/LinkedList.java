@@ -7,7 +7,7 @@ package com.imooc.linkedlist;
  * @Description
  * @Date 18-5-3 下午9:19
  */
-public class LinkedListQuery<E> {
+public class LinkedList<E> {
 
 
     /**
@@ -67,7 +67,7 @@ public class LinkedListQuery<E> {
      */
     private int size;
 
-    public LinkedListQuery() {
+    public LinkedList() {
         //初始化虚拟头指针,存在节点即是一个null
         dummyHead = new Node(null, null);
         size = 0;
@@ -169,6 +169,43 @@ public class LinkedListQuery<E> {
      */
     public E getLast() {
         return get(size - 1);
+    }
+
+
+    /**
+     * 根据索引移除相应的元素位置
+     *
+     * @param index
+     * @return
+     */
+    public E remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Remove failed. Illegal index!");
+        }
+        Node prev = dummyHead;
+        for (int i = 0; i < index; i++) {
+            prev = prev.next;
+        }
+        Node delNode = prev.next;
+        prev.next = delNode.next;
+        delNode.next = null;
+        size--;
+        return delNode.e;
+    }
+
+    /**
+     * 删除链表第一个元素
+     * @return 元素节点
+     */
+    public E removeFirst() {
+        return remove(0);
+    }
+    /**
+     * 删除链表最后一个元素
+     * @return 元素节点
+     */
+    public E removeLast() {
+        return remove(size - 1);
     }
 
 

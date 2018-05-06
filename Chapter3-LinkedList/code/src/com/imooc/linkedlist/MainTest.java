@@ -13,22 +13,22 @@ public class MainTest {
 
     @Test
     public void testLinkedList(){
-        LinkedListQuery<Integer> linkedListQuery = new LinkedListQuery<>();
+        LinkedList<Integer> linkedList = new LinkedList<>();
         for (int i = 0; i < 5; i++) {
-            linkedListQuery.addFirst(i);
-            System.out.println(linkedListQuery);
+            linkedList.addFirst(i);
+            System.out.println(linkedList);
         }
-        linkedListQuery.add(2,666);
-        System.out.println(linkedListQuery);
+        linkedList.add(2,666);
+        System.out.println(linkedList);
 
-        linkedListQuery.remove(2);
-        System.out.println(linkedListQuery);
+        linkedList.remove(2);
+        System.out.println(linkedList);
 
-        linkedListQuery.removeFirst();
-        System.out.println(linkedListQuery);
+        linkedList.removeFirst();
+        System.out.println(linkedList);
 
-        linkedListQuery.removeLast();
-        System.out.println(linkedListQuery);
+        linkedList.removeLast();
+        System.out.println(linkedList);
 
     }
 }
