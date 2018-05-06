@@ -3,11 +3,11 @@ package com.imooc.linkedlist;
 /**
  * @author suyu
  * @version 1.0.0
- * @ClassName LinkedList
+ * @ClassName LinkedListBasic
  * @Description 最基础的动态数据结构--链表
  * @Date 2018/5/1 21:52
  */
-public class LinkedList<E> {
+public class LinkedListBasic<E> {
 
     /**
      * 此处设计Node节点类为内部类，目的如下：
@@ -66,7 +66,7 @@ public class LinkedList<E> {
      */
     private int size;
 
-    public LinkedList() {
+    public LinkedListBasic() {
         //初始化头指针为空,大小为0
         head = null;
         size = 0;

@@ -171,6 +171,44 @@ public class LinkedListQuery<E> {
         return get(size - 1);
     }
 
+
+    /**
+     * 根据索引移除相应的元素位置
+     *
+     * @param index
+     * @return
+     */
+    public E remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Remove failed. Illegal index!");
+        }
+        Node prev = dummyHead;
+        for (int i = 0; i < index; i++) {
+            prev = prev.next;
+        }
+        Node delNode = prev.next;
+        prev.next = delNode.next;
+        delNode.next = null;
+        size--;
+        return delNode.e;
+    }
+
+    /**
+     * 删除链表第一个元素
+     * @return 元素节点
+     */
+    public E removeFirst() {
+        return remove(0);
+    }
+    /**
+     * 删除链表最后一个元素
+     * @return 元素节点
+     */
+    public E removeLast() {
+        return remove(size - 1);
+    }
+
+
     /**
      * 获取链表的第index(0-based)个位置的元素
      * 在链表中不是一个常用的操作,此处是练习用 :)
