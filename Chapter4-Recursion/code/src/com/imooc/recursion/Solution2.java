@@ -39,5 +39,21 @@ public class Solution2 {
 
         return dummyHead.next;
     }
+
+    /**
+     * leetCode 203 题,自己先实现一个listNode节点的方法，在进行自己的测试类测试
+     * debug 发现，链表就是在无限递归,添加Node时,value存入Node1中,而Node1的
+     * next是null,继续添加时,Node2中的value填充Node1的next节点,而Node2本身的next依然是空。
+     * @param args
+     */
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 6, 4, 5, 6};
+        ListNode listNode = new ListNode(arr);
+        System.out.println(listNode);
+
+        Solution2 solution2 = new Solution2();
+        solution2.removeElements(listNode, 6);
+        System.out.println(listNode);
+    }
 }
 
