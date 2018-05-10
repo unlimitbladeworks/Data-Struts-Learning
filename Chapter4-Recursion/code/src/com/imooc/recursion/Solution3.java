@@ -18,8 +18,7 @@ public class Solution3 {
 
         /**
          * 递归自身函数,进行删除调用
-         * 当链表的值等于传入要删除的值,返回下一个
-         * 还是有点疑惑留给明天把
+         * 当链表的值等于传入要删除的值,指向下一节点
          */
         head.next = removeElements(head.next,val);
         return head.val == val ? head.next : head;
