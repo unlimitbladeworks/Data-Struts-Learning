@@ -1,5 +1,11 @@
 package com.imooc.recursion;
-
+/**
+ * @author suyu
+ * @version 1.0.0
+ * @ClassName Solution3
+ * @Description  递归实现解决链表删除问题 leetCode 203题
+ * @Date 18-5-10 下午10:33
+ */
 public class Solution3 {
 
     /**
