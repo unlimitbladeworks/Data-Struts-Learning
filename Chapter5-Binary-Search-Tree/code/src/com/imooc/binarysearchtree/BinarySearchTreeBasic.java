@@ -3,11 +3,11 @@ package com.imooc.binarysearchtree;
 /**
  * @author suyu
  * @version 1.0.0
- * @ClassName BinarySearchTree
- * @Description 二分搜索树
+ * @ClassName BinarySearchTreeBasic
+ * @Description 二分搜索树-基础版
  * @Date 2018/5/11 22:27
  */
-public class BinarySearchTree<E extends Comparable<E>> {
+public class BinarySearchTreeBasic<E extends Comparable<E>> {
 
     private class Node {
         /**
@@ -40,7 +40,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
     /**
      * 初始化二分搜索树
      */
-    public BinarySearchTree() {
+    public BinarySearchTreeBasic() {
         this.root = null;
         this.size = 0;
     }
