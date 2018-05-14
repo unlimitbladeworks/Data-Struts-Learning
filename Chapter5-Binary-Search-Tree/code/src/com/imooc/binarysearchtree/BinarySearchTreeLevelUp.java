@@ -127,6 +127,7 @@ public class BinarySearchTreeLevelUp<E extends Comparable<E>> {
         }
     }
 
+    //前序遍历
     public void preOrder() {
         preOrder(root);
     }
@@ -152,6 +153,60 @@ public class BinarySearchTreeLevelUp<E extends Comparable<E>> {
         preOrder(node.left);
         preOrder(node.right);
     }
+
+    //中序遍历
+    public void midOrder() {
+        midOrder(root);
+    }
+
+    /**
+     * 中序遍历
+     * （1）中序遍历左子树
+     * （2）访问根结点
+     * （3）中序遍历右子树
+     * <p>
+     * 规律:从小到大排序的遍历顺序
+     *
+     * @param node
+     */
+    private void midOrder(Node node) {
+
+        if (node == null) {
+            return;
+        }
+
+        midOrder(node.left);
+        System.out.println(node.e);
+        midOrder(node.right);
+
+    }
+
+    //后序遍历
+    public void postOrder() {
+        postOrder(root);
+    }
+
+    /**
+     * 若二叉树为空则结束返回，
+     * 否则：
+     * （1）后序遍历左子树
+     * （2）后序遍历右子树
+     * （3）访问根结点
+     * 应用:
+     * 二分搜索树释放内存
+     *
+     * @param node
+     */
+    private void postOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.println(node.e);
+    }
+
 
     @Override
     public String toString() {

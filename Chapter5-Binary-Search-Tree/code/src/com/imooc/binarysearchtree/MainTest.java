@@ -30,5 +30,13 @@ public class MainTest {
         bst.preOrder();
         System.out.println();
         System.out.println(bst);
+
+        //中序遍历
+        bst.midOrder();
+        System.out.println();
+
+        //后序遍历
+        bst.postOrder();
+        System.out.println();
     }
 }
