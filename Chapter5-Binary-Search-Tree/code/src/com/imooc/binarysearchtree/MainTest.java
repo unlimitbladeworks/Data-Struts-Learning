@@ -31,6 +31,10 @@ public class MainTest {
         System.out.println();
         System.out.println(bst);
 
+        //非递归遍历树结构
+        bst.preOrderNR();
+        System.out.println();
+
         //中序遍历
         bst.midOrder();
         System.out.println();
@@ -38,5 +42,8 @@ public class MainTest {
         //后序遍历
         bst.postOrder();
         System.out.println();
+
+
+
     }
 }

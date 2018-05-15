@@ -1,5 +1,7 @@
 package com.imooc.binarysearchtree;
 
+import java.util.Stack;
+
 /**
  * @author suyu
  * @version 1.0.0
@@ -153,6 +155,28 @@ public class BinarySearchTreeLevelUp<E extends Comparable<E>> {
         preOrder(node.left);
         preOrder(node.right);
     }
+
+
+    /**
+     * 使用栈实现非递归二叉树前序遍历
+     * NR:No Recursion 非递归
+     */
+    public void preOrderNR() {
+
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            Node current = stack.pop();
+            System.out.println(current.e);
+            if (current.right != null) {
+                stack.push(current.right);
+            }
+            if (current.left != null) {
+                stack.push(current.left);
+            }
+        }
+    }
+
 
     //中序遍历
     public void midOrder() {
