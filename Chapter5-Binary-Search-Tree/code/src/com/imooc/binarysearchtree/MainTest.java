@@ -31,8 +31,12 @@ public class MainTest {
         System.out.println();
         System.out.println(bst);
 
-        //非递归遍历树结构
+        //非递归遍历树结构(深度优先遍历)
         bst.preOrderNR();
+        System.out.println();
+
+        //层次遍历(广度优先遍历)
+        bst.levelOrder();
         System.out.println();
 
         //中序遍历
