@@ -12,9 +12,8 @@ public interface Set<E> {
     /**
      * Ìí¼ÓÔªËØ
      * @param e
-     * @return
      */
-    E add(E e);
+    void add(E e);
 
     /**
      * É¾³ıÔªËØ
