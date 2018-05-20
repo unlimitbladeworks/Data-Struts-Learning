@@ -1,4 +1,4 @@
-package com.imooc.linkedlist;
+package com.imooc.set;
 
 /**
  * @author suyu
