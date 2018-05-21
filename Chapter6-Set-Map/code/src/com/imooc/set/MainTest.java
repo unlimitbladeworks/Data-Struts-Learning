@@ -19,10 +19,15 @@ public class MainTest {
         System.out.println("Pride and Prejudice");
 
         ArrayList<String> words1 = new ArrayList<>();
+
+        //开始时间
+        long startTime = System.nanoTime();
+
         //idea_workspace/Data-Struts-Learning/Chapter6-Set-Map/code/src
         if (FileOperation.readFile("./Data-Struts-Learning/Chapter6-Set-Map/code/src/pride-and-prejudice.txt", words1)) {
             System.out.println("Total words: " + words1.size());
 
+            //分析:二分搜索树的时间复杂度: log(n)
             BSTSet<String> set1 = new BSTSet<>();
             for (String word : words1) {
                 set1.add(word);
@@ -45,6 +50,11 @@ public class MainTest {
             }
             System.out.println("Total different words: " + set2.getSize());
         }
+
+        //结束时间
+        long endTime = System.nanoTime();
+        double spendTime = (endTime - startTime) / 1000000000;
+        System.out.println(spendTime);
     }
 
     @Test
@@ -52,9 +62,14 @@ public class MainTest {
         System.out.println("Pride and Prejudice");
 
         ArrayList<String> words1 = new ArrayList<>();
+
+        //开始时间
+        long startTime = System.nanoTime();
+
         if (FileOperation.readFile("./Data-Struts-Learning/Chapter6-Set-Map/code/src/pride-and-prejudice.txt", words1)) {
             System.out.println("Total words: " + words1.size());
 
+            //基于链表实现的Set时间复杂度: n
             LinkedListSet<String> set1 = new LinkedListSet<>();
             for (String word : words1) {
                 set1.add(word);
@@ -77,5 +92,9 @@ public class MainTest {
             }
             System.out.println("Total different words: " + set2.getSize());
         }
+        //结束时间
+        long endTime = System.nanoTime();
+        double spendTime = (endTime - startTime) / 1000000000;
+        System.out.println(spendTime);
     }
 }
