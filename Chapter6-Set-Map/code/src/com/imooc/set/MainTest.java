@@ -2,6 +2,7 @@ package com.imooc.set;
 
 import org.junit.Test;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -18,7 +19,8 @@ public class MainTest {
         System.out.println("Pride and Prejudice");
 
         ArrayList<String> words1 = new ArrayList<>();
-        if (FileOperation.readFile("C:\\Users\\sy\\Desktop\\慕课实战git笔记\\Data-Struts-Learning\\Chapter6-Set-Map\\code\\src\\pride-and-prejudice.txt", words1)) {
+        //idea_workspace/Data-Struts-Learning/Chapter6-Set-Map/code/src
+        if (FileOperation.readFile("./Data-Struts-Learning/Chapter6-Set-Map/code/src/pride-and-prejudice.txt", words1)) {
             System.out.println("Total words: " + words1.size());
 
             BSTSet<String> set1 = new BSTSet<>();
@@ -34,7 +36,7 @@ public class MainTest {
         System.out.println("A Tale of Two Cities");
 
         ArrayList<String> words2 = new ArrayList<>();
-        if (FileOperation.readFile("C:\\Users\\sy\\Desktop\\慕课实战git笔记\\Data-Struts-Learning\\Chapter6-Set-Map\\code\\src\\a-tale-of-two-cities.txt", words2)) {
+        if (FileOperation.readFile("./Data-Struts-Learning/Chapter6-Set-Map/code/src/a-tale-of-two-cities.txt", words2)) {
             System.out.println("Total words: " + words2.size());
 
             BSTSet<String> set2 = new BSTSet<>();
@@ -50,7 +52,7 @@ public class MainTest {
         System.out.println("Pride and Prejudice");
 
         ArrayList<String> words1 = new ArrayList<>();
-        if (FileOperation.readFile("C:\\Users\\sy\\Desktop\\慕课实战git笔记\\Data-Struts-Learning\\Chapter6-Set-Map\\code\\src\\pride-and-prejudice.txt", words1)) {
+        if (FileOperation.readFile("./Data-Struts-Learning/Chapter6-Set-Map/code/src/pride-and-prejudice.txt", words1)) {
             System.out.println("Total words: " + words1.size());
 
             LinkedListSet<String> set1 = new LinkedListSet<>();
@@ -66,7 +68,7 @@ public class MainTest {
         System.out.println("A Tale of Two Cities");
 
         ArrayList<String> words2 = new ArrayList<>();
-        if (FileOperation.readFile("C:\\Users\\sy\\Desktop\\慕课实战git笔记\\Data-Struts-Learning\\Chapter6-Set-Map\\code\\src\\a-tale-of-two-cities.txt", words2)) {
+        if (FileOperation.readFile("./Data-Struts-Learning/Chapter6-Set-Map/code/src/a-tale-of-two-cities.txt", words2)) {
             System.out.println("Total words: " + words2.size());
 
             LinkedListSet<String> set2 = new LinkedListSet<>();
