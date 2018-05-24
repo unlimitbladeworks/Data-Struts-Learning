@@ -30,8 +30,8 @@ public class LinkedListMap<K, V> implements Map<K, V> {
             this.next = next;
         }
 
-        public Node(K key) {
-            this(key, null, null);
+        public Node(K key,V value) {
+            this(key, value, null);
         }
 
         public Node() {
@@ -59,7 +59,7 @@ public class LinkedListMap<K, V> implements Map<K, V> {
      * @return
      */
     private Node getNode(K key) {
-        Node current = new Node(key);
+        Node current = dummyHead.next;
         while (current != null) {
             if (current.key.equals(key)) {
                 return current;
