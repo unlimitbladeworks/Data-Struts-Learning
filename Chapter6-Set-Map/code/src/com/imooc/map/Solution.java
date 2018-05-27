@@ -44,7 +44,7 @@ public class Solution {
     public static void main(String[] args) {
         int[] num1 = {1, 2, 2, 1};
         int[] nums2 = {2, 2};
-        int[] result = intersection(num1,nums2);
+        int[] result = intersection(num1, nums2);
         for (int i : result) {
             System.out.print(i + " ");
         }
