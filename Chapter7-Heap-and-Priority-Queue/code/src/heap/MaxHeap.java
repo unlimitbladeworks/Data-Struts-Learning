@@ -101,9 +101,11 @@ public class MaxHeap<E extends Comparable<E>> {
      * @param i
      */
     private void siftUp(int i) {
-
-
-
-
+        //如果当前索引大于0,并且子节点比父节点大,则进行交换位置
+        while(i > 0 && data.get(parent(i)).compareTo(data.get(i)) <0){
+            data.swap(i,parent(i));
+            //如果父节点小于子节点,将父节点索引位置交给子节点
+            i = parent(i);
+        }
     }
 }

@@ -138,6 +138,7 @@ public class Array<E> {
 
     /**
      * 获取数组最后一位的值
+     *
      * @return 索引为-1(最后,这里用python的-1来代表了)的值
      */
     E getLast() {
@@ -146,6 +147,7 @@ public class Array<E> {
 
     /**
      * 获取第一位的元素
+     *
      * @return 索引为1的值
      */
     E getFirst() {
@@ -255,6 +257,21 @@ public class Array<E> {
         return false;
     }
 
+    /**
+     * swap method
+     *
+     * @param i 子节点索引
+     * @param j 父节点索引
+     */
+    public void swap(int i, int j) {
+        if (i < 0 || i >= size || j < 0 || j >= size) {
+            throw new IllegalArgumentException("Index is Illegal!");
+        }
+        E t = data[i];
+        data[i] = data[j];
+        data[j] = t;
+    }
+
 
     /**
      * 重写了toString方法，为了打印方便
@@ -276,4 +293,6 @@ public class Array<E> {
         sb.append("]");
         return sb.toString();
     }
+
+
 }
