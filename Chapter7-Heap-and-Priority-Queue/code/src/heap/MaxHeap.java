@@ -81,4 +81,29 @@ public class MaxHeap<E extends Comparable<E>> {
         return index * 2 + 2;
     }
 
+    /**
+     * 堆中插入元素
+     * 实现思路:通过动态数组实现,向数组索引末尾处添加元素
+     * 若子节点比父节点大,则交换位置
+     * if child's Node > parent's Node:
+     *     swap(siftUp)
+     *
+     * @param e 元素
+     */
+    public void add(E e) {
+        data.addLast(e);
+        //数组最后一位索引,减1是因为索引从0开始
+        siftUp(data.getSize() - 1);
+    }
+
+    /**
+     * 堆的上浮方法,比较父-子节点
+     * @param i
+     */
+    private void siftUp(int i) {
+
+
+
+
+    }
 }
