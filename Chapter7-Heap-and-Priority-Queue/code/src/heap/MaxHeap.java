@@ -126,6 +126,32 @@ public class MaxHeap<E extends Comparable<E>> {
     }
 
     /**
+     * 下沉过程
+     * i节点左孩子索引小于总个数(循环一直继续)
+     * @param i
+     */
+    private void siftDown(int i) {
+        while (leftChild(i) < data.getSize()) {
+            int j = leftChild(i);
+            /*
+             * j + 1 < data.getSize()说明有右孩子
+             * j 存的是右孩子索引节点
+             */
+            if (j + 1 < data.getSize() &&
+                    data.get(j + 1).compareTo(data.get(j)) > 0) {
+                j = rightChild(i);
+            }
+            //data[j] 是 leftChild 和 rightChild中的最大值
+            if (data.get(i).compareTo(data.get(j)) >= 0) {
+                break;
+            }
+
+            data.swap(i, j);
+            i = j;
+        }
+    }
+
+    /**
      * 查找堆的最大元素,即数组索引为0的元素
      *
      * @return
