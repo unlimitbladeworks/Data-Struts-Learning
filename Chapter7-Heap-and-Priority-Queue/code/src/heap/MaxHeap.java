@@ -108,4 +108,35 @@ public class MaxHeap<E extends Comparable<E>> {
             i = parent(i);
         }
     }
+
+    /**
+     * 取出堆中最大元素
+     * @return
+     */
+    public E extractMax() {
+        E ret = findMax();
+        //1. 将最末尾的位置元素与最大元素交换
+        data.swap(0, data.getSize() - 1);
+        //2. 移除最后的最大元素
+        data.removeLast();
+        //3. 将换后的0索引元素sift Down到最下面
+        siftDown(0);
+        //返回最大临时存储的元素
+        return ret;
+    }
+
+    /**
+     * 查找堆的最大元素,即数组索引为0的元素
+     *
+     * @return
+     */
+    private E findMax() {
+        if (data.getSize() == 0) {
+            throw new IllegalArgumentException("Can not findMax when heap is empty!");
+        }
+        //堆的第一个元素
+        return data.get(0);
+    }
+
+
 }
