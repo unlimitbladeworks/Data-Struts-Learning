@@ -87,7 +87,7 @@ public class MaxHeap<E extends Comparable<E>> {
      * 若子节点比父节点大,则交换位置
      * if child's Node > parent's Node:
      *     swap(siftUp)
-     *
+     * 时间复杂度:O(log n)
      * @param e 元素
      */
     public void add(E e) {
@@ -111,6 +111,7 @@ public class MaxHeap<E extends Comparable<E>> {
 
     /**
      * 取出堆中最大元素
+     * 时间复杂度:O(log n)
      * @return
      */
     public E extractMax() {
