@@ -31,6 +31,18 @@ public class MaxHeap<E extends Comparable<E>> {
     }
 
     /**
+     * 添加heapify的方式添加数组数据
+     * 原理：从数组最后一个索引位置的元素开始向上遍历,每次进行下沉操作。
+     * @param arr
+     */
+    public MaxHeap(E[] arr) {
+        data = new Array<>(arr);
+        for (int i = parent(arr.length - 1); i >= 0; i--) {
+            siftDown(i);
+        }
+    }
+
+    /**
      * 返回堆中个数
      *
      * @return int个数
@@ -86,8 +98,9 @@ public class MaxHeap<E extends Comparable<E>> {
      * 实现思路:通过动态数组实现,向数组索引末尾处添加元素
      * 若子节点比父节点大,则交换位置
      * if child's Node > parent's Node:
-     *     swap(siftUp)
+     * swap(siftUp)
      * 时间复杂度:O(log n)
+     *
      * @param e 元素
      */
     public void add(E e) {
@@ -98,12 +111,13 @@ public class MaxHeap<E extends Comparable<E>> {
 
     /**
      * 堆的上浮方法,比较父-子节点
+     *
      * @param i
      */
     private void siftUp(int i) {
         //如果当前索引大于0,并且子节点比父节点大,则进行交换位置
-        while(i > 0 && data.get(parent(i)).compareTo(data.get(i)) <0){
-            data.swap(i,parent(i));
+        while (i > 0 && data.get(parent(i)).compareTo(data.get(i)) < 0) {
+            data.swap(i, parent(i));
             //如果父节点小于子节点,将父节点索引位置交给子节点
             i = parent(i);
         }
@@ -112,6 +126,7 @@ public class MaxHeap<E extends Comparable<E>> {
     /**
      * 取出堆中最大元素
      * 时间复杂度:O(log n)
+     *
      * @return
      */
     public E extractMax() {
@@ -129,6 +144,7 @@ public class MaxHeap<E extends Comparable<E>> {
     /**
      * 下沉过程
      * i节点左孩子索引小于总个数(循环一直继续)
+     *
      * @param i
      */
     private void siftDown(int i) {
