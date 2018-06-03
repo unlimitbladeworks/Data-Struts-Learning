@@ -1,7 +1,10 @@
 package heap;
 
+import org.junit.Test;
+
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 
 /**
@@ -68,7 +71,9 @@ public class LeetCodeSolution {
         }
 
         PriorityQueue<Freq> queue = new PriorityQueue<>();
-        for (int key : map.keySet()) {
+        //此处和bobo老师的遍历结构不同,阿里推荐遍历map使用EntrySet进行遍历
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            Integer key = entry.getKey();
             if (queue.getSize() < k){
                 queue.enqueue(new Freq(key,map.get(key)));
             }else if (map.get(key) > queue.getHead().freq){
@@ -85,4 +90,14 @@ public class LeetCodeSolution {
         return res;
     }
 
+    @Test
+    public void testPriorityQueue(){
+        //频率
+        int k = 2;
+        int[] array = {1,1,1,2,2,3};
+
+        LeetCodeSolution solution = new LeetCodeSolution();
+        List<Integer> list = solution.topKFrequent(array,k);
+        System.out.println(list);
+    }
 }
