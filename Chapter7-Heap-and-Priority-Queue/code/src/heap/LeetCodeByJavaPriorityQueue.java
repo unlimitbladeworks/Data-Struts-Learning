@@ -5,18 +5,19 @@ import org.junit.Test;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.TreeMap;
 
 /**
  * @author suyu
  * @version 1.0.0
- * @ClassName LeetCodeSolution
- * @Description LeetCode 347 题,使用优先队列(自己实现的优先队列,自定义的优先队列实现是最大堆)解决：
+ * @ClassName LeetCodeByJavaPriorityQueue
+ * @Description 使用java原生的优先队列(其底层实现是最小堆)实现LeetCode 347 题
  * 给定一个非空的整数数组，返回其中出现频率前 k 高的元素。
  * 给定数组 [1,1,1,2,2,3] , 和 k = 2，返回 [1,2]。
- * @Date 2018/6/3 15:23
+ * @Date 2018/6/3 15:58
  */
-public class LeetCodeSolution {
+public class LeetCodeByJavaPriorityQueue {
 
     /**
      * 构造一个freq内部类,封装了key-value作为对象属性
@@ -32,22 +33,25 @@ public class LeetCodeSolution {
         }
 
         /**
-         * 频率越小,优先级越大
-         * 目的是让队列中只存频率最大的,频率小的都出队了
+         * java原生的优先队列(其底层实现是最小堆)
+         * 所以比较的逻辑需要变更:
+         * 如果当前的频率小于传入的频率,返回-1，大于,返回1,
+         * 此处逻辑与最大堆的实现相反....
          * @param another
          * @return
          */
         @Override
         public int compareTo(Freq another) {
             if (this.freq < another.freq) {
-                return 1;
-            } else if (this.freq > another.freq) {
                 return -1;
+            } else if (this.freq > another.freq) {
+                return 1;
             } else {
                 return 0;
             }
         }
     }
+
 
     /**
      * LeetCode主方法
@@ -70,22 +74,23 @@ public class LeetCodeSolution {
             }
         }
 
+
         PriorityQueue<Freq> queue = new PriorityQueue<>();
         //此处和bobo老师的遍历结构不同,阿里推荐遍历map使用EntrySet进行遍历
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             Integer key = entry.getKey();
-            if (queue.getSize() < k){
-                queue.enqueue(new Freq(key,map.get(key)));
-            }else if (map.get(key) > queue.getHead().freq){
-                queue.dequeue();
-                queue.enqueue(new Freq(key,map.get(key)));
+            if (queue.size() < k){
+                queue.add(new Freq(key,map.get(key)));
+            }else if (map.get(key) > queue.peek().freq){
+                queue.remove();
+                queue.add(new Freq(key,map.get(key)));
             }
         }
 
         LinkedList<Integer> res = new LinkedList<>();
         //若队列不为空,则弹出最后剩余队列中的key值
         while (!queue.isEmpty()){
-            res.add(queue.dequeue().e);
+            res.add(queue.remove().e);
         }
         return res;
     }
