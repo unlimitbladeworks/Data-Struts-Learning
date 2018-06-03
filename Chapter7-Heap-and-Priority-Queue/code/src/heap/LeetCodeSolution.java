@@ -11,7 +11,7 @@ import java.util.TreeMap;
  * @author suyu
  * @version 1.0.0
  * @ClassName LeetCodeSolution
- * @Description LeetCode 347 题,使用优先队列(自己实现的优先队列)解决：
+ * @Description LeetCode 347 题,使用优先队列(自己实现的优先队列,自定义的优先队列实现是最大堆)解决：
  * 给定一个非空的整数数组，返回其中出现频率前 k 高的元素。
  * 给定数组 [1,1,1,2,2,3] , 和 k = 2，返回 [1,2]。
  * @Date 2018/6/3 15:23
