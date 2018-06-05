@@ -1,6 +1,7 @@
 package heap;
 
 import org.junit.Test;
+import priorityqueue.PriorityQueue;
 
 import java.util.LinkedList;
 import java.util.List;

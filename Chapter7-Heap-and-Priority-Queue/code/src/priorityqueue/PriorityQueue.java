@@ -1,6 +1,7 @@
-package heap;
+package priorityqueue;
 
 import com.imooc.queues.Queue;
+import heap.MaxHeap;
 
 /**
  * @author suyu

@@ -1,5 +1,6 @@
-package heap;
+package priorityqueue;
 
+import heap.LeetCodeSolution;
 import org.junit.Test;
 
 import java.util.*;
