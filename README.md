@@ -13,3 +13,5 @@
 ## [第六章 - 集合和映射](https://github.com/unlimitbladeworks/Data-Struts-Learning/tree/master/Chapter6-Set-Map) ##
 
 ## [第七章 - 堆和优先队列](https://github.com/unlimitbladeworks/Data-Struts-Learning/tree/master/Chapter7-Heap-and-Priority-Queue) ##
+
+## [第八章 - 线段树](https://github.com/unlimitbladeworks/Data-Struts-Learning/tree/master/Chapter8-Segment-Tree) ##
