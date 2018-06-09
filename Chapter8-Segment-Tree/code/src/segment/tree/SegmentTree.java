@@ -26,10 +26,46 @@ public class SegmentTree<E> {
         }
         //构造4倍长度
         tree = (E[]) new Object[arr.length * 4];
+        buildSegmentTree(0, 0, data.length - 1);
+    }
+
+    /**
+     * 创建线段树的方法
+     * 在treeIndex的位置,创建[l....r]区间
+     *
+     * @param treeIndex 线段树的根节点
+     * @param l         区间的左索引
+     * @param r         区间的右索引
+     */
+    private void buildSegmentTree(int treeIndex, int l, int r) {
+
+        if (l == r) {
+            tree[treeIndex] = data[l];
+            return;
+        }
+
+        //返回左孩子树的索引
+        int leftTreeIndex = this.leftChild(treeIndex);
+        //返回右孩子树的索引
+        int rightTreeIndex = this.leftChild(treeIndex);
+
+        /*
+         * 此处不写 (l + r)/2 的原因是:
+         *  怕数字太大导致整型溢出,下面写法与此写法计算中间值是一样的.
+         */
+        int mid = l + (r - l) / 2;
+        //创建左线段 子树
+        buildSegmentTree(leftTreeIndex, l, mid);
+        //创建右线段 子树
+        buildSegmentTree(rightTreeIndex, mid + 1, r);
+
+
+
     }
 
     /**
      * 获取树的大小
+     *
      * @return
      */
     public int getSize() {
@@ -38,6 +74,7 @@ public class SegmentTree<E> {
 
     /**
      * 根据索引获取元素
+     *
      * @param index
      * @return
      */
@@ -50,6 +87,7 @@ public class SegmentTree<E> {
 
     /**
      * 返回完全二叉树的数组表示中,一个索引所表示的元素的左孩子节点的索引
+     *
      * @param index
      * @return
      */
@@ -59,12 +97,11 @@ public class SegmentTree<E> {
 
     /**
      * 返回完全二叉树的数组表示中,一个索引所表示的元素的右孩子节点的索引
+     *
      * @param index
      * @return
      */
     private int rightChild(int index) {
         return 2 * index + 2;
     }
-
-
 }
