@@ -19,7 +19,16 @@ public class SegmentTree<E> {
      */
     private E[] data;
 
-    public SegmentTree(E[] arr) {
+    /**
+     * 初始融合器
+     */
+    private Merger<E> merger;
+
+    public SegmentTree(E[] arr,Merger<E> merger) {
+
+        //初始化融合器
+        this.merger = merger;
+
         data = (E[]) new Object[arr.length];
         for (int i = 0; i < arr.length; i++) {
             data[i] = arr[i];
@@ -58,8 +67,8 @@ public class SegmentTree<E> {
         buildSegmentTree(leftTreeIndex, l, mid);
         //创建右线段 子树
         buildSegmentTree(rightTreeIndex, mid + 1, r);
-
-
+        //综合左右两个线段信息,得到大的线段信息
+        tree[treeIndex] = merger.merger(tree[leftTreeIndex],tree[rightTreeIndex]);
 
     }
 
