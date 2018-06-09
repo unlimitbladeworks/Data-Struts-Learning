@@ -1,5 +1,7 @@
 package segment.tree;
 
+import java.util.Arrays;
+
 /**
  * @author suyu
  * @version 1.0.0
@@ -24,7 +26,7 @@ public class SegmentTree<E> {
      */
     private Merger<E> merger;
 
-    public SegmentTree(E[] arr,Merger<E> merger) {
+    public SegmentTree(E[] arr, Merger<E> merger) {
 
         //初始化融合器
         this.merger = merger;
@@ -35,7 +37,7 @@ public class SegmentTree<E> {
         }
         //构造4倍长度
         tree = (E[]) new Object[arr.length * 4];
-        buildSegmentTree(0, 0, data.length - 1);
+        buildSegmentTree(0, 0, arr.length - 1);
     }
 
     /**
@@ -56,7 +58,7 @@ public class SegmentTree<E> {
         //返回左孩子树的索引
         int leftTreeIndex = this.leftChild(treeIndex);
         //返回右孩子树的索引
-        int rightTreeIndex = this.leftChild(treeIndex);
+        int rightTreeIndex = this.rightChild(treeIndex);
 
         /*
          * 此处不写 (l + r)/2 的原因是:
@@ -68,7 +70,7 @@ public class SegmentTree<E> {
         //创建右线段 子树
         buildSegmentTree(rightTreeIndex, mid + 1, r);
         //综合左右两个线段信息,得到大的线段信息
-        tree[treeIndex] = merger.merger(tree[leftTreeIndex],tree[rightTreeIndex]);
+        tree[treeIndex] = merger.merger(tree[leftTreeIndex], tree[rightTreeIndex]);
 
     }
 
@@ -112,5 +114,23 @@ public class SegmentTree<E> {
      */
     private int rightChild(int index) {
         return 2 * index + 2;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append('[');
+        for (int i = 0; i < tree.length; i++) {
+            if (tree[i] != null) {
+                stringBuilder.append(tree[i]);
+            } else {
+                stringBuilder.append("null");
+            }
+            if (i != tree.length - 1) {
+                stringBuilder.append(", ");
+            }
+        }
+        stringBuilder.append(']');
+        return stringBuilder.toString();
     }
 }
