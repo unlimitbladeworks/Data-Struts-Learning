@@ -41,4 +41,18 @@ public class MainTest {
         /////////////////////////////////////////
 
     }
+
+    /**
+     * 线段树的查询测试用例
+     */
+    @Test
+    public void testSegmentTreeQuery() {
+        Integer[] nums = {-2, 0, 3, -5, 2, -1};
+        //java8的lambda表达式写法,merger传入的是sum
+        SegmentTree<Integer> segmentTree = new SegmentTree<>(nums, (a, b) -> a + b);
+        // 0-2 的区间线段树值sum = 1
+        System.out.println(segmentTree.query(0,2));
+        System.out.println(segmentTree.query(2,5));
+        System.out.println(segmentTree.query(0,5));
+    }
 }
