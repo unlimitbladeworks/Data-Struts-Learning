@@ -116,6 +116,55 @@ public class SegmentTree<E> {
         return 2 * index + 2;
     }
 
+    /**
+     * 返回区间[queryL....queryR]的值
+     *
+     * @param queryL 区间左边界
+     * @param queryR 区间右边界
+     * @return 区间值
+     */
+    public E query(int queryL, int queryR) {
+        //校验索引边界
+        if (queryL < 0 || queryL >= data.length || queryR < 0 || queryR >= data.length || queryL > queryR) {
+            throw new IllegalArgumentException("Index is illegal!");
+        }
+        return query(0, 0, data.length - 1, queryL, queryR);
+    }
+
+    /**
+     * 创建递归函数（查询）
+     * 在以treeIndex为根的线段树中[l....r]的区间范围里,搜索[queryL...queryR]的值
+     *
+     * @param treeIndex 根索引
+     * @param l         左区间
+     * @param r         右区间
+     * @param queryL    查询左区间
+     * @param queryR    查询右区间
+     * @return 查询的值
+     */
+    private E query(int treeIndex, int l, int r, int queryL, int queryR) {
+        if (l == queryL && r == queryR) {
+            return tree[treeIndex];
+        }
+        int mid = l + (r - l) / 2;
+        int leftIndex = this.leftChild(treeIndex);
+        int rightIndex = this.rightChild(treeIndex);
+
+        //如果查询区间的左边界大于中间边界索引,则递归遍历右子树
+        if (queryL >= mid + 1) {
+            return query(rightIndex, mid + 1, r, queryL, queryR);
+        } else if (queryR <= mid) {
+            return query(leftIndex, l, mid, queryL, queryR);
+        }
+
+        //左边区间结果
+        E leftResult = query(leftIndex, l, mid, queryL, mid);
+        //右边区间结果
+        E rightResult = query(rightIndex, mid + 1, r, mid + 1, queryR);
+        return merger.merger(leftResult,rightResult);
+    }
+
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
