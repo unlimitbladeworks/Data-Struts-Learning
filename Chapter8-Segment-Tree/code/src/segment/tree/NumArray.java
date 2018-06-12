@@ -8,7 +8,7 @@ import org.junit.runners.Parameterized;
  * @author suyu
  * @version 1.0.0
  * @ClassName NumArray
- * @Description leetCode303
+ * @Description leetCode303 -- use SegmentTree
  * 给定 nums = [-2, 0, 3, -5, 2, -1]，求和函数为 sumRange()
  * <p>
  * sumRange(0, 2) -> 1
