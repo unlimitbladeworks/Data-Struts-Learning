@@ -20,8 +20,14 @@ public class NumArray2 {
      */
     private static int[] sum;
 
+    private static int[] data;
+
     public NumArray2(int nums[]) {
 
+        data = new int[nums.length];
+        for (int i = 0; i < data.length; i++) {
+            data[i] = nums[i];
+        }
         sum = new int[nums.length + 1];
         sum[0] = 0;
         for (int i = 1; i < sum.length; i++) {
@@ -31,11 +37,21 @@ public class NumArray2 {
     }
 
     public static int sumRange(int i, int j) {
-        return sum[j+1] - sum[i];
+        return sum[j + 1] - sum[i];
+    }
+
+    public static void update(int index, int val) {
+
+        data[index] = val;
+        for (int i = index + 1; i < sum.length; i++) {
+            sum[i] = sum[i - 1] + data[i - 1];
+        }
     }
 
     public static void main(String[] args) {
         NumArray2 numArray2 = new NumArray2(new int[]{-2, 0, 3, -5, 2, -1});
         System.out.println(sumRange(0, 2));
+        update(2,2);
+        System.out.println(sumRange(0,2));
     }
 }
