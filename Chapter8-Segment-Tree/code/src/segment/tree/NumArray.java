@@ -21,7 +21,6 @@ public class NumArray {
     private static SegmentTree<Integer> segmentTree;
 
 
-
     public NumArray(int[] nums) {
 
         if (nums.length > 0) {
@@ -36,10 +35,22 @@ public class NumArray {
 
     public static int sumRange(int i, int j) {
 
-        if (segmentTree == null){
+        if (segmentTree == null) {
             throw new IllegalArgumentException("Segment Tree is null!");
         }
-        return segmentTree.query(i,j);
+        return segmentTree.query(i, j);
+    }
+
+    /**
+     * 使用线段树来作更新操作
+     * @param index
+     * @param val
+     */
+    public static void update(int index, int val) {
+        if (segmentTree == null) {
+            throw new IllegalArgumentException("Segment Tree is null!");
+        }
+        segmentTree.set(index,val);
     }
 
     public static void main(String[] args) {
