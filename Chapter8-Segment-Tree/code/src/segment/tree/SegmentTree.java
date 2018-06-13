@@ -134,7 +134,7 @@ public class SegmentTree<E> {
     /**
      * 创建递归函数（查询）
      * 在以treeIndex为根的线段树中[l....r]的区间范围里,搜索[queryL...queryR]的值
-     *
+     * 时间复杂度:  O(logn)
      * @param treeIndex 根索引
      * @param l         左区间
      * @param r         右区间
@@ -166,7 +166,7 @@ public class SegmentTree<E> {
 
     /**
      * 更新操作
-     *
+     * 时间复杂度:  O(logn)
      * @param index
      * @param e
      */
