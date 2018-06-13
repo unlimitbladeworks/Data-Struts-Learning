@@ -43,6 +43,7 @@ public class NumArray {
 
     /**
      * 使用线段树来作更新操作
+     *
      * @param index
      * @param val
      */
@@ -50,11 +51,14 @@ public class NumArray {
         if (segmentTree == null) {
             throw new IllegalArgumentException("Segment Tree is null!");
         }
-        segmentTree.set(index,val);
+        segmentTree.set(index, val);
     }
 
     public static void main(String[] args) {
         NumArray numArray = new NumArray(new int[]{-2, 0, 3, -5, 2, -1});
+        System.out.println(sumRange(0, 2));
+        update(0, 0);
+        //assert == 3 is true
         System.out.println(sumRange(0, 2));
     }
 }
