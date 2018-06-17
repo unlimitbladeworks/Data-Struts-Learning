@@ -27,5 +27,55 @@ public class Trie {
          */
         public TreeMap<Character, Node> next;
 
+        public Node(boolean isWord) {
+            this.isWord = isWord;
+            next = new TreeMap<>();
+        }
+
+        public Node() {
+            this(false);
+        }
+    }
+
+    private Node root;
+
+    private int size;
+
+
+    public Trie() {
+        root = new Node();
+        size = 0;
+    }
+
+    /**
+     * 获取Trie中存储的单词数量
+     *
+     * @return
+     */
+    public int getSize() {
+        return size;
+    }
+
+    /**
+     * 向Trie中添加一个新的单词word
+     *
+     * @param word
+     */
+    public void add(String word) {
+
+        Node current = root;
+
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+            if (current.next.get(c) == null) {
+                current.next.put(c, new Node());
+            }
+            current = current.next.get(c);
+        }
+        if (!current.isWord){
+            current.isWord = true;
+            size++;
+        }
+
     }
 }
