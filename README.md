@@ -15,3 +15,5 @@
 ## [第七章 - 堆和优先队列](https://github.com/unlimitbladeworks/Data-Struts-Learning/tree/master/Chapter7-Heap-and-Priority-Queue) ##
 
 ## [第八章 - 线段树](https://github.com/unlimitbladeworks/Data-Struts-Learning/tree/master/Chapter8-Segment-Tree) ##
+
+## [第九章 - trie](https://github.com/unlimitbladeworks/Data-Struts-Learning/tree/master/Chapter9-Trie) ##
