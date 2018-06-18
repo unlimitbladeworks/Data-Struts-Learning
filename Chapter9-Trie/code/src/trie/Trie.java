@@ -72,10 +72,28 @@ public class Trie {
             }
             current = current.next.get(c);
         }
-        if (!current.isWord){
+        if (!current.isWord) {
             current.isWord = true;
             size++;
         }
+    }
 
+    /**
+     * 查询word 是否在Trie中
+     *
+     * @param word
+     * @return
+     */
+    public boolean contains(String word) {
+
+        Node current = root;
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+            if (current.next.get(c) == null) {
+                return false;
+            }
+            current = current.next.get(c);
+        }
+        return current.isWord;
     }
 }
