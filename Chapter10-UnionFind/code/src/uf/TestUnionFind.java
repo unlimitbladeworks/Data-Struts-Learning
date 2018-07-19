@@ -45,13 +45,16 @@ public class TestUnionFind {
     public static void main(String[] args) {
 
         int size = 100000;
-        int m = 10000;
+        int m = 100000;
 
         UnionFindOne unionFindOne = new UnionFindOne(size);
         System.out.println("UnionFind1 : " +  testUF(unionFindOne,m) + " s");
 
         UnionFindTwo unionFindTwo = new UnionFindTwo(size);
         System.out.println("UnionFind2 : " +  testUF(unionFindTwo,m) + " s");
+
+        UnionFindThree unionFindThree = new UnionFindThree(size);
+        System.out.println("UnionFind3 : " +  testUF(unionFindThree,m) + " s");
 
     }
 }
