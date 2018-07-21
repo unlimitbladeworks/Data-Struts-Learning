@@ -1,27 +1,27 @@
 package uf;
-
 /**
  * @author suyu
  * @version 1.0.0
- * @ClassName UnionFindThree
- * @Description 并查集第三版--基于size的优化(并查集树的根节点的size,size小的指向大的)
- * @Date 2018年07月19日22:20:56
+ * @ClassName UnionFindFour
+ * @Description 并查集第四版,基于rank的优化
+ *              rank 代表树的深度
+ * @Date 2018年07月21日12:55:17
  */
-public class UnionFindThree implements UF {
+public class UnionFindFour implements UF{
 
     private int[] parent;
 
     /**
-     * sz[i]表示以i为根的集合中元素个数
+     * rank[i]表示以i为根的集合所表示树的层数
      */
-    private int[] sz;
+    private int[] rank;
 
-    public UnionFindThree(int size) {
+    public UnionFindFour(int size) {
         parent = new int[size];
-        sz = new int[size];
+        rank = new int[size];
         for (int i = 0; i < size; i++) {
             parent[i] = i;
-            sz[i] = 1;
+            rank[i] = 1;
         }
     }
 
@@ -77,12 +77,15 @@ public class UnionFindThree implements UF {
             return;
         }
 
-        if (sz[pRoot] < sz[qRoot]) {
+        //根据两个元素所在树的rank不同判断合并方向
+        //将rank低的集合合并到rank高的集合上
+        if (rank[pRoot] < rank[qRoot]) {
             parent[pRoot] = qRoot;
-            sz[qRoot] += sz[pRoot];
-        } else { //sz[qRoot] <= sz[pRoot]
+        }else if (rank[qRoot] < rank[pRoot]){
             parent[qRoot] = pRoot;
-            sz[pRoot] += sz[qRoot];
+        } else { //sz[qRoot] == sz[pRoot]
+            parent[qRoot] = pRoot;
+            rank[pRoot] += 1;
         }
     }
 }
