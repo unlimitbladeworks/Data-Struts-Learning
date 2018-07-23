@@ -47,14 +47,21 @@ public class TestUnionFind {
         int size = 100000;
         int m = 100000;
 
+        /**先注释掉两个慢的
         UnionFindOne unionFindOne = new UnionFindOne(size);
         System.out.println("UnionFind1 : " +  testUF(unionFindOne,m) + " s");
 
         UnionFindTwo unionFindTwo = new UnionFindTwo(size);
         System.out.println("UnionFind2 : " +  testUF(unionFindTwo,m) + " s");
-
+        */
         UnionFindThree unionFindThree = new UnionFindThree(size);
         System.out.println("UnionFind3 : " +  testUF(unionFindThree,m) + " s");
+
+        UnionFindFour unionFindFour = new UnionFindFour(size);
+        System.out.println("UnionFind4 : " +  testUF(unionFindFour,m) + " s");
+
+        UnionFindFive unionFindFive = new UnionFindFive(size);
+        System.out.println("UnionFind5 : " +  testUF(unionFindFive,m) + " s");
 
     }
 }
