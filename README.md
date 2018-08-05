@@ -19,3 +19,5 @@
 ## [第九章 - trie](https://github.com/unlimitbladeworks/Data-Struts-Learning/tree/master/Chapter09-Trie) ##
 
 ## [第十章 - 并查集(UnionFind)](https://github.com/unlimitbladeworks/Data-Struts-Learning/tree/master/Chapter10-UnionFind) ##
+
+## [第十一章 - AVL](https://github.com/unlimitbladeworks/Data-Struts-Learning/tree/master/Chapter11-AVLTree) ##
