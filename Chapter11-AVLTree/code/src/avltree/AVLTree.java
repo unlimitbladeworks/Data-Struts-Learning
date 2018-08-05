@@ -1,13 +1,17 @@
-package com.imooc.map;
+package avltree;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
 /**
+ * @ClassName AVLTree
+ * @Description AVLTree的实现 version1.0
  * @author suyu
+ * @Date 2018/8/5 10:19
  * @version 1.0.0
- * @ClassName BST
- * @Description 基于二分搜索树创建的Map
- * @Date 2018/5/25 22:07
  */
-public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
+public class AVLTree<K extends Comparable<K>, V> {
 
     /**
      * 创建树节点
@@ -37,13 +41,12 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
     /**
      * 构造函数
      */
-    public BSTMap() {
+    public AVLTree() {
         root = null;
         size = 0;
     }
 
 
-    @Override
     public void add(K key, V value) {
         //添加二分搜索树添加元素：根节点k-v值
         root = add(root, key, value);
@@ -107,21 +110,6 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
     }
 
 
-    /**
-     * 删除对应key的值
-     *
-     * @param key
-     * @return
-     */
-    @Override
-    public V remove(K key) {
-        Node node = getNode(root, key);
-        if (node != null) {
-            root = remove(root, key);
-            return node.value;
-        }
-        return null;
-    }
 
     /**
      * 删除以node为根的二分搜索树中key的节点，递归算法
@@ -197,7 +185,6 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
      * @param key
      * @return
      */
-    @Override
     public boolean contains(K key) {
         return getNode(root, key) != null;
     }
@@ -208,7 +195,6 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
      * @param key
      * @return
      */
-    @Override
     public V get(K key) {
         Node node = getNode(root, key);
         return node == null ? null : node.value;
@@ -220,7 +206,6 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
      * @param key
      * @param newValue
      */
-    @Override
     public void set(K key, V newValue) {
         Node node = getNode(root, key);
         if (node == null) {
@@ -230,12 +215,10 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
     }
 
 
-    @Override
     public int getSize() {
         return size;
     }
 
-    @Override
     public boolean isEmpty() {
         return size == 0;
     }

@@ -64,14 +64,14 @@ public class MainTest {
     }
 
     /**
-     * 测试LinkedListMap 和 BSTMap 二者间的时间差测试用例
+     * 测试LinkedListMap 和 BST 二者间的时间差测试用例
      */
     @Test
     public void testTimeCompare() {
         LinkedListMap<String, Integer> map = new LinkedListMap<>();
         System.out.println("LinkedListMap:" + testMap(map) + "s");
         BSTMap<String, Integer> map2 = new BSTMap<>();
-        System.out.println("BSTMap:" + testMap(map2) + "s");
+        System.out.println("BST:" + testMap(map2) + "s");
     }
 
     /**
