@@ -1,15 +1,12 @@
 package avltree;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
 
 /**
+ * @author suyu
+ * @version 1.0.0
  * @ClassName AVLTree
  * @Description AVLTree的实现 version1.0
- * @author suyu
  * @Date 2018/8/5 10:19
- * @version 1.0.0
  */
 public class AVLTree<K extends Comparable<K>, V> {
 
@@ -20,12 +17,14 @@ public class AVLTree<K extends Comparable<K>, V> {
         public K key;
         public V value;
         public Node left, right;
+        public int height;
 
         public Node(K key, V value) {
             this.key = key;
             this.value = value;
             left = null;
             right = null;
+            height = 1;
         }
     }
 
@@ -44,6 +43,32 @@ public class AVLTree<K extends Comparable<K>, V> {
     public AVLTree() {
         root = null;
         size = 0;
+    }
+
+    /**
+     * 获取树的高度
+     *
+     * @param node
+     * @return
+     */
+    private int getHeight(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        return node.height;
+    }
+
+    /**
+     * 获取树的平衡因子
+     *
+     * @param node
+     * @return
+     */
+    private int getBalanceFactor(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        return getHeight(node.left) - getHeight(node.right);
     }
 
 
@@ -74,6 +99,14 @@ public class AVLTree<K extends Comparable<K>, V> {
         } else { //key.compareTo(node.key) == 0
             node.value = value;
         }
+
+        //更新height,左右子树的
+        node.height = 1 + Math.max(getHeight(node.left), getHeight(node.right));
+        int balanceFactor = getBalanceFactor(node);
+        if (Math.abs(balanceFactor) > 1) {
+            System.out.println("unbalanced:" + balanceFactor);
+        }
+
         return node;
     }
 
@@ -108,7 +141,6 @@ public class AVLTree<K extends Comparable<K>, V> {
         node.left = removeMin(node.left);
         return node;
     }
-
 
 
     /**

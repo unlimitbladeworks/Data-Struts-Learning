@@ -24,7 +24,7 @@ public class MainTest {
         ArrayList<String> words1 = new ArrayList<>();
 
 
-        if (FileOperation.readFile("./Data-Struts-Learning/Chapter6-Set-Map/code/src/pride-and-prejudice.txt", words1)) {
+        if (FileOperation.readFile("./Data-Struts-Learning/Chapter11-AVLTree/code/src/pride-and-prejudice.txt", words1)) {
             System.out.println("Total words: " + words1.size());
 
             BSTMap<String, Integer> map = new BSTMap<>();
@@ -47,7 +47,7 @@ public class MainTest {
         ArrayList<String> words1 = new ArrayList<>();
 
 
-        if (FileOperation.readFile("./Data-Struts-Learning/Chapter6-Set-Map/code/src/pride-and-prejudice.txt", words1)) {
+        if (FileOperation.readFile("./Data-Struts-Learning/Chapter11-AVLTree/code/src/pride-and-prejudice.txt", words1)) {
             System.out.println("Total words: " + words1.size());
 
             AVLTree<String, Integer> avlTree = new AVLTree<>();
