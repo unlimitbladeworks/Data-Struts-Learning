@@ -60,6 +60,8 @@ public class MainTest {
             }
             System.out.println("Total different words: " + avlTree.getSize());
             System.out.println("Frequency of PRIDE : " + avlTree.get("pride"));
+            System.out.println("Is BST:" + avlTree.isBST());
+            System.out.println("Is Balanced:" + avlTree.isBalanced());
         }
     }
 }
