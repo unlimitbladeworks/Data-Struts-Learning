@@ -96,7 +96,31 @@ public class AVLTree<K extends Comparable<K>, V> {
         x.height = Math.max(getHeight(x.left), getHeight(x.right)) + 1;
 
         return x;
+    }
 
+
+    // 对节点y进行向左旋转操作,返回旋转后新的根节点x
+    //      y                         x
+    //     / \                      /  \
+    //    T1  x     向左旋转(y)     y    z
+    //       / \   ------------> / \   / \
+    //      T2  z               T1 T2 T3 T4
+    //         / \
+    //        T3  T4
+
+    private Node leftRotate(Node y) {
+        Node x = y.right;
+        Node T2 = x.left;
+
+        //向左旋转
+        x.left = y;
+        y.right = T2;
+
+        //更新height
+        y.height = Math.max(getHeight(y.left), getHeight(y.right)) + 1;
+        x.height = Math.max(getHeight(x.left), getHeight(x.right)) + 1;
+
+        return x;
     }
 
     /**
@@ -197,8 +221,11 @@ public class AVLTree<K extends Comparable<K>, V> {
 
         //平衡维护
         if (balanceFactor > 1 && getBalanceFactor(node.left) >= 0) {
-            rightRotate(node);
+            return rightRotate(node);
+        }
 
+        if (balanceFactor < -1 && getBalanceFactor(node.right) <= 0) {
+            return leftRotate(node);
         }
 
         return node;
