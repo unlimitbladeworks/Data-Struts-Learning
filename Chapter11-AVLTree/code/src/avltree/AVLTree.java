@@ -71,6 +71,31 @@ public class AVLTree<K extends Comparable<K>, V> {
         return getHeight(node.left) - getHeight(node.right);
     }
 
+    // 对节点y进行向右旋转操作,返回旋转后新的根节点x
+    //          y                          x
+    //         / \                       /  \
+    //        x   T4    向右旋转(y)      z    y
+    //       / \     -------------->  / \   / \
+    //      z  T3                    T1 T2 T3 T4
+    //     / \
+    //    T1  T2
+
+    private Node rightRotate(Node y) {
+        //看上图就可以很容易写出来
+        Node x = y.left;
+        Node T3 = x.right;
+
+        //向右旋转,
+        x.right = y;
+        y.left = T3;
+
+        //更新height
+        y.height = Math.max(getHeight(y.left),getHeight(y.right)) + 1;
+        x.height = Math.max(getHeight(x.left),getHeight(x.right)) + 1;
+
+        return x;
+    }
+
 
     public void add(K key, V value) {
         //添加二分搜索树添加元素：根节点k-v值
@@ -105,6 +130,12 @@ public class AVLTree<K extends Comparable<K>, V> {
         int balanceFactor = getBalanceFactor(node);
         if (Math.abs(balanceFactor) > 1) {
             System.out.println("unbalanced:" + balanceFactor);
+        }
+
+        //平衡维护
+        if (balanceFactor > 1 && getBalanceFactor(node.left) >= 0) {
+            rightRotate(node);
+
         }
 
         return node;
