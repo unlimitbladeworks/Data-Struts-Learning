@@ -1,6 +1,5 @@
 package uf;
 
-import java.awt.*;
 import java.util.Random;
 
 /**

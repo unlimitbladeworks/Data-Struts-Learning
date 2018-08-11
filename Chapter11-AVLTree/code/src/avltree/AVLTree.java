@@ -1,6 +1,8 @@
 package avltree;
 
 
+import java.util.ArrayList;
+
 /**
  * @author suyu
  * @version 1.0.0
@@ -90,10 +92,71 @@ public class AVLTree<K extends Comparable<K>, V> {
         y.left = T3;
 
         //更新height
-        y.height = Math.max(getHeight(y.left),getHeight(y.right)) + 1;
-        x.height = Math.max(getHeight(x.left),getHeight(x.right)) + 1;
+        y.height = Math.max(getHeight(y.left), getHeight(y.right)) + 1;
+        x.height = Math.max(getHeight(x.left), getHeight(x.right)) + 1;
 
         return x;
+
+    }
+
+    /**
+     * 判断该二叉树是否是一颗二分搜索树
+     *
+     * @return
+     */
+    public boolean isBST() {
+        ArrayList<K> keys = new ArrayList<>();
+        inOrder(root, keys);
+        for (int i = 1; i < keys.size(); i++) {
+            if (keys.get(i - 1).compareTo(keys.get(i)) > 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 判断该二叉树是否是一颗平衡树
+     *
+     * @return
+     */
+    public boolean isBalanced() {
+        return isBalanced(root);
+    }
+
+    /**
+     * 判断以Node为根的二叉树是否是一颗平衡二叉树,递归算法
+     *
+     * @param node
+     * @return
+     */
+    private boolean isBalanced(Node node) {
+
+        if (node == null) {
+            return true;
+        }
+        int balanceFactor = getBalanceFactor(node);
+        if (Math.abs(balanceFactor) > 1) {
+            return false;
+        }
+        return isBalanced(node.left) && isBalanced(node.right);
+
+    }
+
+    /**
+     * 中序遍历
+     *
+     * @param node
+     * @param keys
+     */
+    private void inOrder(Node node, ArrayList<K> keys) {
+        if (node == null) {
+            return;
+        }
+
+        inOrder(node.left, keys);
+        keys.add(node.key);
+        inOrder(node.right, keys);
     }
 
 
