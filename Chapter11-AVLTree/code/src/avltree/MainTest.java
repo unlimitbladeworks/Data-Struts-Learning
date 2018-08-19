@@ -25,8 +25,8 @@ public class MainTest {
 
 
         if (FileOperation.readFile("./Data-Struts-Learning/Chapter11-AVLTree/code/src/pride-and-prejudice.txt", words1)) {
+            long startTime = System.nanoTime();
             System.out.println("Total words: " + words1.size());
-
             BSTMap<String, Integer> map = new BSTMap<>();
             for (String word : words1) {
                 if (map.contains(word)) {
@@ -37,6 +37,10 @@ public class MainTest {
             }
             System.out.println("Total different words: " + map.getSize());
             System.out.println("Frequency of PRIDE : " + map.get("pride"));
+            long endTime = System.nanoTime();
+            double time = (endTime - startTime)/1000000000.0;
+            //BST spend time:0.228477757s
+            System.out.println("BST spend time:" + time + "s");
         }
     }
 
@@ -48,8 +52,8 @@ public class MainTest {
 
 
         if (FileOperation.readFile("./Data-Struts-Learning/Chapter11-AVLTree/code/src/pride-and-prejudice.txt", words1)) {
+            long startTime = System.nanoTime();
             System.out.println("Total words: " + words1.size());
-
             AVLTree<String, Integer> avlTree = new AVLTree<>();
             for (String word : words1) {
                 if (avlTree.contains(word)) {
@@ -62,6 +66,10 @@ public class MainTest {
             System.out.println("Frequency of PRIDE : " + avlTree.get("pride"));
             System.out.println("Is BST:" + avlTree.isBST());
             System.out.println("Is Balanced:" + avlTree.isBalanced());
+            long endTime = System.nanoTime();
+            double time = (endTime - startTime)/1000000000.0;
+            //AVL spend time:0.518091708s（因打印原因造成的）
+            System.out.println("AVL spend time:" + time + "s");
         }
     }
 }
