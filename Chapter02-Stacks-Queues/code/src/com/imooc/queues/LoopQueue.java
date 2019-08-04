@@ -39,6 +39,7 @@ public class LoopQueue<E> implements Queue<E> {
     }
 
     public int getCapacity() {
+        //减一目的是因为浪费了一个空间，所以可用长度就是全部减一
         return data.length - 1;
     }
 
